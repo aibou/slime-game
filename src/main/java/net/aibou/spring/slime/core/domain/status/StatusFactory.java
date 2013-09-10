@@ -1,6 +1,11 @@
 package net.aibou.spring.slime.core.domain.status;
 
 public class StatusFactory {
+	
+	/**
+	 * 初期ステータス
+	 * @return
+	 */
 	public static Status createInitialStatus() {
 		StatusBuilder statusBuilder = new StatusBuilder();
 		return statusBuilder
@@ -12,6 +17,10 @@ public class StatusFactory {
 				.build();
 	}
 	
+	/**c
+	 * 鍛えるコマンドで上昇するステータス
+	 * @return
+	 */
 	public static Status createBuildUpStatus() {
 		StatusBuilder statusBuilder = new StatusBuilder();
 		return statusBuilder
@@ -23,6 +32,10 @@ public class StatusFactory {
 				.build();
 	}
 
+	/**
+	 * 勉強するコマンドで上昇するステータス
+	 * @return
+	 */
 	public static Status createStudyStatus() {
 		StatusBuilder statusBuilder = new StatusBuilder();
 		return statusBuilder
@@ -34,6 +47,10 @@ public class StatusFactory {
 				.build();
 	}
 
+	/**
+	 * 猛特訓するコマンドで上昇するステータス
+	 * @return
+	 */
 	public static Status createBuildUpHardStatus() {
 		StatusBuilder statusBuilder = new StatusBuilder();
 		return statusBuilder
@@ -45,17 +62,28 @@ public class StatusFactory {
 				.build();
 	}
 
+	/**
+	 * 自由にするコマンドで上昇するステータス.
+	 * いずれかのステータスが2〜12の範囲で上昇する
+	 * @return
+	 */
 	public static Status createFreeStatus() {
 		StatusBuilder statusBuilder = new StatusBuilder();
+		int[] status = new int[]{0, 0, 0, 0, 0};
+		status[randomInRangeOf(0, 4)] = randomInRangeOf(2, 12);
 		return statusBuilder
-				.hp(randomInRangeOf(4, 6))
-				.mp(randomInRangeOf(0, 0))
-				.ap(randomInRangeOf(3, 5))
-				.dp(randomInRangeOf(3, 5))
-				.sp(randomInRangeOf(0, 1))
+				.hp(status[0])
+				.mp(status[1])
+				.ap(status[2])
+				.dp(status[3])
+				.sp(status[4])
 				.build();
 	}
 
+	/**
+	 * 遊ばせるコマンドで上昇するステータス
+	 * @return
+	 */
 	public static Status createPlayStatus() {
 		StatusBuilder statusBuilder = new StatusBuilder();
 		return statusBuilder
@@ -67,6 +95,10 @@ public class StatusFactory {
 				.build();
 	}
 
+	/**
+	 * 休ませるコマンドで上昇するステータス
+	 * @return
+	 */
 	public static Status createRestStatus() {
 		StatusBuilder statusBuilder = new StatusBuilder();
 		return statusBuilder
@@ -85,7 +117,7 @@ public class StatusFactory {
 	 * @param max
 	 * @return
 	 */
-	private static int  randomInRangeOf(int min, int max) {
+	private static int randomInRangeOf(int min, int max) {
 		if(min > max) {
 			min = min ^ max;
 			max = min ^ max;
