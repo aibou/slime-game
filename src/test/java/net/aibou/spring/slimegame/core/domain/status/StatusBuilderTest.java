@@ -1,7 +1,8 @@
-package net.aibou.spring.slime.core.domain.status;
+package net.aibou.spring.slimegame.core.domain.status;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+import net.aibou.spring.slimegame.core.domain.status.StatusBuilder;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package net.aibou.spring.slime.core.domain.status;
+package net.aibou.spring.slimegame.core.domain.status;
 
 public class StatusFactory {
 	
@@ -104,6 +104,17 @@ public class StatusFactory {
 		return statusBuilder
 				.hp(randomInRangeOf(5, 9))
 				.mp(randomInRangeOf(4, 7))
+				.ap(0)
+				.dp(0)
+				.sp(0)
+				.build();
+	}
+	
+	public static Status createNullStatus() {
+		StatusBuilder statusBuilder = new StatusBuilder();
+		return statusBuilder
+				.hp(0)
+				.mp(0)
 				.ap(0)
 				.dp(0)
 				.sp(0)

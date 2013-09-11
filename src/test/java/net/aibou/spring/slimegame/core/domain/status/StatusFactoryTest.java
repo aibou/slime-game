@@ -1,7 +1,13 @@
-package net.aibou.spring.slime.core.domain.status;
+package net.aibou.spring.slimegame.core.domain.status;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import net.aibou.spring.slimegame.core.domain.status.Status;
+import net.aibou.spring.slimegame.core.domain.status.StatusFactory;
 
 import org.junit.Test;
 
@@ -60,7 +66,7 @@ public class StatusFactoryTest {
 		int ap = status.getAp();
 		int dp = status.getDp();
 		int sp = status.getSp();
-		
+
 		assertThat(hp, isOneOf(4, 5, 6, 7));
 		assertThat(mp, isOneOf(3, 4, 5));
 		assertThat(ap, isOneOf(3, 4, 5));
@@ -76,6 +82,53 @@ public class StatusFactoryTest {
 		int ap = status.getAp();
 		int dp = status.getDp();
 		int sp = status.getSp();
+
+		Collection<Integer> increaseRange = Arrays.asList(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+		if(hp != 0) {
+			assertThat(hp, isIn(increaseRange));
+			assertThat(mp, is(0));
+			assertThat(ap, is(0));
+			assertThat(dp, is(0));
+			assertThat(sp, is(0));
+			return;
+		}
+		
+		if(mp != 0) {
+			assertThat(hp, is(0));
+			assertThat(mp, isIn(increaseRange));
+			assertThat(ap, is(0));
+			assertThat(dp, is(0));
+			assertThat(sp, is(0));
+			return;
+		}
+		
+		if(ap != 0) {
+			assertThat(hp, is(0));
+			assertThat(mp, is(0));
+			assertThat(ap, isIn(increaseRange));
+			assertThat(dp, is(0));
+			assertThat(sp, is(0));
+			return;
+		}
+		
+		if(dp != 0) {
+			assertThat(hp, is(0));
+			assertThat(mp, is(0));
+			assertThat(ap, is(0));
+			assertThat(dp, isIn(increaseRange));
+			assertThat(sp, is(0));
+			return;
+		}
+		
+		if(sp != 0) {
+			assertThat(hp, is(0));
+			assertThat(mp, is(0));
+			assertThat(ap, is(0));
+			assertThat(dp, is(0));
+			assertThat(sp, isIn(increaseRange));
+			return;
+		}
+		fail();
 	}
 
 	@Test

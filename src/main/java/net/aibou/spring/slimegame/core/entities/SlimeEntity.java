@@ -1,4 +1,4 @@
-package net.aibou.spring.slime.core.entities;
+package net.aibou.spring.slimegame.core.entities;
 
 /**
  * Slimeの情報を格納するクラス
@@ -7,7 +7,7 @@ package net.aibou.spring.slime.core.entities;
  */
 public class SlimeEntity {
 	private String name;
-	private String owner;
+	private String ownerName;
 	private int hp;
 	private int mp;
 	private int ap;
@@ -19,7 +19,7 @@ public class SlimeEntity {
 	 * @author hamaji_ryosuke
 	 *
 	 */
-	public static class Builder {
+	public class Builder {
 
 		private String name;
 		private String owner;
@@ -34,7 +34,7 @@ public class SlimeEntity {
 		public SlimeEntity build() {
 			SlimeEntity slime =  new SlimeEntity();
 			slime.name = this.name;
-			slime.owner = this.owner;
+			slime.ownerName = this.owner;
 			slime.hp = this.hp;
 			slime.mp = this.mp;
 			slime.ap = this.ap;
@@ -84,7 +84,7 @@ public class SlimeEntity {
 	}
 
 	public String getOwner() {
-		return owner;
+		return ownerName;
 	}
 
 	public int getHp() {

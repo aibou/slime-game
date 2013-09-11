@@ -1,4 +1,4 @@
-package net.aibou.spring.slime.core.domain.status;
+package net.aibou.spring.slimegame.core.domain.status;
 
 
 public class Status {
